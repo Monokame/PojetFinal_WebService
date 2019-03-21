@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace WcfService1
 {
-    public class Preinscrit
+    public class BDDPreinscrit
     {
         public int id;
         public int IdPreinscrit;

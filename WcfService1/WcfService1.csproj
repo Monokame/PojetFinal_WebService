@@ -73,15 +73,15 @@
   <ItemGroup>
     <Compile Include="DBConf.cs" />
     <Compile Include="DBConn.cs" />
-    <Compile Include="InsertSQL.cs" />
-    <Compile Include="Preinscrit.cs" />
-    <Compile Include="SelectSQL.cs" />
+    <Compile Include="SQLInsert.cs" />
+    <Compile Include="BDDPreinscrit.cs" />
+    <Compile Include="SQLSelect.cs" />
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>
     </Compile>
     <Compile Include="IService1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tempo.cs" />
+    <Compile Include="BDDAffichage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

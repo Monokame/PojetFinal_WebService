@@ -2,16 +2,19 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.ServiceModel.Web;
+using System.Text;
 using System.Web;
 
 namespace WcfService1
 {
-    public class SelectSQL
+    public class SQLSelect
     {
-        public string SelectPreinscrit()
+        public Stream SelectPreinscrit()
         {
-            List<Preinscrit> preinscritL = new List<Preinscrit>();
+            List<BDDPreinscrit> preinscritL = new List<BDDPreinscrit>();
             MySqlConnection conn = DBConf.GetDBConnection();
             conn.Open();
             try
@@ -24,7 +27,7 @@ namespace WcfService1
                 while (reader.Read())
                 {
 
-                    Preinscrit preinscrit = new Preinscrit()
+                    BDDPreinscrit preinscrit = new BDDPreinscrit()
                     {
                         id = Convert.ToInt32(reader[0]),
                         IdPreinscrit = Convert.ToInt32(reader[1]),
@@ -41,13 +44,13 @@ namespace WcfService1
                     };
                     preinscritL.Add(preinscrit);
                 }
-                string output = JsonConvert.SerializeObject(preinscritL);
-
-                return output;
+                string str = JsonConvert.SerializeObject(preinscritL);
+                byte[] azerty = Encoding.Default.GetBytes(str);
+                WebOperationContext.Current.OutgoingResponse.ContentType = "text/plain";
+                return new MemoryStream(azerty);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                return e.ToString(); ;
                 throw;
             }
             finally

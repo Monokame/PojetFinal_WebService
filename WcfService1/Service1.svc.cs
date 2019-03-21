@@ -35,15 +35,15 @@ namespace WcfService1
 
         public string Insert(Stream stream)
         {
-            InsertSQL insert = new InsertSQL();
+            SQLInsert insertSQL = new SQLInsert();
             StreamReader streamReader = new StreamReader(stream);
             string str = streamReader.ReadLine();
-            string test=insert.InsertPreinscrit(str);
+            string test=insertSQL.InsertPreinscrit(str);
             return test;
         }
-        public string Select()
+        public Stream Select()
         {
-            SelectSQL selectSQL = new SelectSQL();
+            SQLSelect selectSQL = new SQLSelect();
             return selectSQL.SelectPreinscrit();
         }
 

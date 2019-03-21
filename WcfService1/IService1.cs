@@ -19,12 +19,12 @@ namespace WcfService1
         string GetData(int value);*/
 
         [OperationContract]
-        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "Insert")]
+        [WebInvoke(Method = "POST", UriTemplate = "Insert")]
         string Insert(Stream stream);
 
         [OperationContract]
-        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "Select")]
-        string Select();
+        [WebInvoke(Method = "GET", UriTemplate = "Select")]
+        Stream Select();
 
         /*[OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);*/

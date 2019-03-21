@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace WcfService1
 {
-    public class InsertSQL
+    public class SQLInsert
     {
         public string InsertPreinscrit(string str)
         {
@@ -20,7 +20,7 @@ namespace WcfService1
                 command.CommandText = "INSERT INTO preinscrit(IdPreinscrit,Nom,Prenom,Adresse,CodePostal,Ville,DateNaissance,Telephone,Email,Club,Ufolep) VALUES(@IdPreinscrit,@Nom,@Prenom,@Adresse,@CodePostal,@Ville,@DateNaissance,@Telephone,@Email,@Club,@Ufolep)";
                 //string json = "{'id':'54','IdPreinscrit':'1','Nom':'MARC','Prenom':'Jérémy','Adresse':'59 Cours Clemenceau','CodePostal':'76100','Ville':'Rouen','DateNaissance':'02-06-1998','Telephone':'0782062639','Email':'jeremy.marc.pro@gmail.com','Club':'azerty'}";
 
-                Preinscrit preinscrit = JsonConvert.DeserializeObject<Preinscrit>(str);
+                BDDPreinscrit preinscrit = JsonConvert.DeserializeObject<BDDPreinscrit>(str);
                 command.Parameters.AddWithValue("id", preinscrit.id);
                 command.Parameters.AddWithValue("IdPreinscrit", preinscrit.IdPreinscrit);
                 command.Parameters.AddWithValue("Nom", preinscrit.Nom);
