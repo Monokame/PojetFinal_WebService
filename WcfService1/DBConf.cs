@@ -12,7 +12,7 @@ namespace WcfService1
         {
             string host = "localhost";
             int port = 3306;
-            string database = "projetvtt";
+            string database = "projetvtt2";
             string username = "root";
             string password = "";
 

@@ -49,5 +49,28 @@ namespace WcfService1
             }
 
         }
+        public string InsertXbee(string str)
+        {
+            MySqlConnection conn = DBConf.GetDBConnection();
+            conn.Open();
+            try
+            {
+                MySqlCommand command = conn.CreateCommand();
+                //cycliste.IdCycliste WHERE Cycliste.RFID_IdRFID1 = rfid.IdRFID AND rfid.InfoCarte = @carteId
+                command.CommandText = "INSERT INTO portique (Temps, , idPortique) VALUES (@date, @carteId, @portique)";
+                BDDXbee xbee = JsonConvert.DeserializeObject<BDDXbee>(str);
+                command.Parameters.AddWithValue("date", xbee.date);
+                command.Parameters.AddWithValue("carteId", xbee.carteId);
+                command.Parameters.AddWithValue("portique", xbee.portique);
+                command.ExecuteNonQuery();
+                return "Success !";
+                
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

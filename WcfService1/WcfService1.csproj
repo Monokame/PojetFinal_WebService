@@ -71,6 +71,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BDDXbee.cs" />
     <Compile Include="DBConf.cs" />
     <Compile Include="DBConn.cs" />
     <Compile Include="SQLInsert.cs" />
