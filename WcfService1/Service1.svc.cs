@@ -38,13 +38,38 @@ namespace WcfService1
             SQLInsert insertSQL = new SQLInsert();
             StreamReader streamReader = new StreamReader(stream);
             string str = streamReader.ReadLine();
-            string test=insertSQL.InsertPreinscrit(str);
-            return test;
+            str=insertSQL.InsertPreinscrit(str);
+            return str;
         }
+        public string InsertXbee(Stream stream)
+        {
+            SQLInsert insertSQL = new SQLInsert();
+            StreamReader streamReader = new StreamReader(stream);
+            string str = streamReader.ReadLine();
+            str = insertSQL.InsertXbee(str);
+            return str;
+        }
+        public string InsertAlerte(Stream stream)
+        {
+            SQLInsert insertSQL = new SQLInsert();
+            StreamReader streamReader = new StreamReader(stream);
+            string str = streamReader.ReadLine();
+            str = insertSQL.InsertAlerte(str);
+            return str;
+        }
+
+
+        //******SELECT******//
         public Stream Select()
         {
             SQLSelect selectSQL = new SQLSelect();
             return selectSQL.SelectPreinscrit();
+        }
+
+        public Stream SelectAffichage()
+        {
+            SQLSelect selectSQL = new SQLSelect();
+            return selectSQL.SelectAffichage();
         }
 
 

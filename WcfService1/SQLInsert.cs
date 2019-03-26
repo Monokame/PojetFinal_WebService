@@ -18,8 +18,7 @@ namespace WcfService1
             {
                 MySqlCommand command = conn.CreateCommand();
                 command.CommandText = "INSERT INTO preinscrit(IdPreinscrit,Nom,Prenom,Adresse,CodePostal,Ville,DateNaissance,Telephone,Email,Club,Ufolep) VALUES(@IdPreinscrit,@Nom,@Prenom,@Adresse,@CodePostal,@Ville,@DateNaissance,@Telephone,@Email,@Club,@Ufolep)";
-                //string json = "{'id':'54','IdPreinscrit':'1','Nom':'MARC','Prenom':'Jérémy','Adresse':'59 Cours Clemenceau','CodePostal':'76100','Ville':'Rouen','DateNaissance':'02-06-1998','Telephone':'0782062639','Email':'jeremy.marc.pro@gmail.com','Club':'azerty'}";
-
+                //{"IdPreinscrit":"99","Nom":"MARC","Prenom":"Jérémy","Adresse":"59 Cours Clemenceau","CodePostal":"76100","Ville":"Rouen","DateNaissance":"02-06-1998","Telephone":"0782062639","Email":"jeremy.marc.pro@gmail.com","Club":"azerty"}
                 BDDPreinscrit preinscrit = JsonConvert.DeserializeObject<BDDPreinscrit>(str);
                 command.Parameters.AddWithValue("id", preinscrit.id);
                 command.Parameters.AddWithValue("IdPreinscrit", preinscrit.IdPreinscrit);
@@ -47,7 +46,6 @@ namespace WcfService1
                 conn.Dispose();
                 conn = null;
             }
-
         }
         public string InsertXbee(string str)
         {
@@ -56,20 +54,50 @@ namespace WcfService1
             try
             {
                 MySqlCommand command = conn.CreateCommand();
-                //cycliste.IdCycliste WHERE Cycliste.RFID_IdRFID1 = rfid.IdRFID AND rfid.InfoCarte = @carteId
-                command.CommandText = "INSERT INTO portique (Temps, , idPortique) VALUES (@date, @carteId, @portique)";
+                command.CommandText = "INSERT INTO portique (idPortique,infoCarte,Temps) VALUES (@portique,@carteId, @date)";
+                //{'portique':'1','carteId':'12316548461','date':'11:34:52'}
                 BDDXbee xbee = JsonConvert.DeserializeObject<BDDXbee>(str);
-                command.Parameters.AddWithValue("date", xbee.date);
-                command.Parameters.AddWithValue("carteId", xbee.carteId);
                 command.Parameters.AddWithValue("portique", xbee.portique);
+                command.Parameters.AddWithValue("carteId", xbee.carteId);
+                command.Parameters.AddWithValue("date", xbee.date);
                 command.ExecuteNonQuery();
                 return "Success !";
-                
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
+                return e.ToString(); ;
                 throw;
+            }
+            finally
+            {
+                conn.Close();
+                conn.Dispose();
+                conn = null;
+            }
+        }
+        public string InsertAlerte(string str)
+        {
+            MySqlConnection conn = DBConf.GetDBConnection();
+            conn.Open();
+            try
+            {
+                MySqlCommand command = conn.CreateCommand();
+                command.CommandText = "INSERT INTO alerte (alerte) VALUES (@alerte)";
+                dynamic alerte = JsonConvert.DeserializeObject(str);
+                command.Parameters.AddWithValue("alerte", alerte.alerte);
+                command.ExecuteNonQuery();
+                return "Success !";
+            }
+            catch (Exception e)
+            {
+                return e.ToString();
+                throw;
+            }
+            finally
+            {
+                conn.Close();
+                conn.Dispose();
+                conn = null;
             }
         }
     }

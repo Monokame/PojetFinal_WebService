@@ -20,13 +20,10 @@ namespace WcfService1
             try
             {
                 MySqlCommand command = conn.CreateCommand();
-
                 command.CommandText = "SELECT * FROM preinscrit";
-
                 MySqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-
                     BDDPreinscrit preinscrit = new BDDPreinscrit()
                     {
                         id = Convert.ToInt32(reader[0]),
@@ -45,9 +42,48 @@ namespace WcfService1
                     preinscritL.Add(preinscrit);
                 }
                 string str = JsonConvert.SerializeObject(preinscritL);
-                byte[] azerty = Encoding.Default.GetBytes(str);
+                byte[] encoded = Encoding.Default.GetBytes(str);
                 WebOperationContext.Current.OutgoingResponse.ContentType = "text/plain";
-                return new MemoryStream(azerty);
+                return new MemoryStream(encoded);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conn.Close();
+                conn.Dispose();
+                conn = null;
+            }
+        }
+
+        public Stream SelectAffichage()
+        {
+            List<BDDAffichage> affichagesL = new List<BDDAffichage>();
+            MySqlConnection conn = DBConf.GetDBConnection();
+            conn.Open();
+            try
+            {
+                MySqlCommand command = conn.CreateCommand();
+                command.CommandText = "SELECT preinscrit.nom, preinscrit.prenom, ,";
+                MySqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    BDDAffichage affichage = new BDDAffichage
+                    {
+                        nom = reader[1].ToString(),
+                        prenom=reader[2].ToString(),
+                        checkpoint=Convert.ToInt32(reader[3]),
+                        positionClassement=Convert.ToInt32(reader[4]),
+                        temps=reader[5].ToString(),
+                        club=reader[6].ToString()
+                    };
+                }
+                string str = JsonConvert.SerializeObject(affichagesL);
+                byte[] encoded = Encoding.Default.GetBytes(str);
+                WebOperationContext.Current.OutgoingResponse.ContentType = "text/plain";
+                return new MemoryStream(encoded);
             }
             catch (Exception)
             {

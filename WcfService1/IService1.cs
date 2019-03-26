@@ -23,9 +23,22 @@ namespace WcfService1
         string Insert(Stream stream);
 
         [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "InsertXbee")]
+        string InsertXbee(Stream stream);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "InsertAlerte")]
+        string InsertAlerte(Stream stream);
+
+
+
+        [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "Select")]
         Stream Select();
 
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "SelectAffichage")]
+        Stream SelectAffichage();
         /*[OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);*/
 
