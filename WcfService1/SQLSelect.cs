@@ -26,18 +26,18 @@ namespace WcfService1
                 {
                     BDDPreinscrit preinscrit = new BDDPreinscrit()
                     {
-                        id = Convert.ToInt32(reader[0]),
-                        IdPreinscrit = Convert.ToInt32(reader[1]),
-                        Nom = reader[2].ToString(),
-                        Prenom = reader[3].ToString(),
-                        Adresse = reader[4].ToString(),
-                        CodePostal = Convert.ToInt32(reader[5]),
-                        Ville = reader[6].ToString(),
-                        DateNaissance = reader[7].ToString(),
-                        Telephone = reader[8].ToString(),
-                        Email = reader[9].ToString(),
-                        Club = reader[10].ToString(),
-                        Ufolep = reader[11].ToString()
+                        IdPreinscrit = Convert.ToInt32(reader[0]),
+                        Nom = reader[1].ToString(),
+                        Prenom = reader[2].ToString(),
+                        Adresse = reader[3].ToString(),
+                        CodePostal = Convert.ToInt32(reader[4]),
+                        Ville = reader[5].ToString(),
+                        DateNaissance = reader[6].ToString(),
+                        Telephone = reader[7].ToString(),
+                        Email = reader[8].ToString(),
+                        Club = reader[9].ToString(),
+                        Ufolep = reader[10].ToString(),
+                        Parcours = Convert.ToInt32(reader[11])
                     };
                     preinscritL.Add(preinscrit);
                 }

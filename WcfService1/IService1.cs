@@ -19,8 +19,8 @@ namespace WcfService1
         string GetData(int value);*/
 
         [OperationContract]
-        [WebInvoke(Method = "POST", UriTemplate = "Insert")]
-        string Insert(Stream stream);
+        [WebInvoke(Method = "POST", UriTemplate = "Insert", RequestFormat =WebMessageFormat.Json)]
+        void Insert(BDDPreinscrit preinscrit);
 
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "InsertXbee")]

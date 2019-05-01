@@ -33,13 +33,10 @@ namespace WcfService1
             return composite;
         }*/
 
-        public string Insert(Stream stream)
+        public void Insert(BDDPreinscrit bddpreinscrit)
         {
-            SQLInsert insertSQL = new SQLInsert();
-            StreamReader streamReader = new StreamReader(stream);
-            string str = streamReader.ReadLine();
-            str=insertSQL.InsertPreinscrit(str);
-            return str;
+            BDDPreinscrit preinscrit = new BDDPreinscrit();
+            preinscrit.Insert(bddpreinscrit);
         }
         public string InsertXbee(Stream stream)
         {

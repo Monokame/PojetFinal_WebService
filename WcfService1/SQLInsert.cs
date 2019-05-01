@@ -18,10 +18,8 @@ namespace WcfService1
             {
                 MySqlCommand command = conn.CreateCommand();
                 command.CommandText = "INSERT INTO preinscrit(IdPreinscrit,Nom,Prenom,Adresse,CodePostal,Ville,DateNaissance,Telephone,Email,Club,Ufolep) VALUES(@IdPreinscrit,@Nom,@Prenom,@Adresse,@CodePostal,@Ville,@DateNaissance,@Telephone,@Email,@Club,@Ufolep)";
-                //{"IdPreinscrit":"99","Nom":"MARC","Prenom":"Jérémy","Adresse":"59 Cours Clemenceau","CodePostal":"76100","Ville":"Rouen","DateNaissance":"02-06-1998","Telephone":"0782062639","Email":"jeremy.marc.pro@gmail.com","Club":"azerty"}
+                //{"Nom":"MARC","Prenom":"Jérémy","Adresse":"59 Cours Clemenceau","CodePostal":"76100","Ville":"Rouen","DateNaissance":"02-06-1998","Telephone":"0782062639","Email":"jeremy.marc.pro@gmail.com","Club":"azerty"}
                 BDDPreinscrit preinscrit = JsonConvert.DeserializeObject<BDDPreinscrit>(str);
-                command.Parameters.AddWithValue("id", preinscrit.id);
-                command.Parameters.AddWithValue("IdPreinscrit", preinscrit.IdPreinscrit);
                 command.Parameters.AddWithValue("Nom", preinscrit.Nom);
                 command.Parameters.AddWithValue("Prenom", preinscrit.Prenom);
                 command.Parameters.AddWithValue("Adresse", preinscrit.Adresse);
@@ -47,6 +45,7 @@ namespace WcfService1
                 conn = null;
             }
         }
+
         public string InsertXbee(string str)
         {
             MySqlConnection conn = DBConf.GetDBConnection();
@@ -75,6 +74,7 @@ namespace WcfService1
                 conn = null;
             }
         }
+
         public string InsertAlerte(string str)
         {
             MySqlConnection conn = DBConf.GetDBConnection();
