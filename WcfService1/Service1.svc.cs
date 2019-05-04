@@ -57,10 +57,12 @@ namespace WcfService1
 
 
         //******SELECT******//
-        public Stream Select()
+        public List<BDDPreinscrit> Select()
         {
-            SQLSelect selectSQL = new SQLSelect();
-            return selectSQL.SelectPreinscrit();
+            /*SQLSelect selectSQL = new SQLSelect();
+            return selectSQL.SelectPreinscrit();*/
+            BDDPreinscrit preinscrit = new BDDPreinscrit();
+            return preinscrit.SelectPreinscrit();
         }
 
         public Stream SelectAffichage()

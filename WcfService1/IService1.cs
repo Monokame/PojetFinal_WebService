@@ -30,11 +30,9 @@ namespace WcfService1
         [WebInvoke(Method = "POST", UriTemplate = "InsertAlerte")]
         string InsertAlerte(Stream stream);
 
-
-
         [OperationContract]
-        [WebInvoke(Method = "GET", UriTemplate = "Select")]
-        Stream Select();
+        [WebInvoke(Method = "GET", UriTemplate = "Select", ResponseFormat =WebMessageFormat.Json),]
+        List<BDDPreinscrit> Select();
 
         [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "SelectAffichage")]
