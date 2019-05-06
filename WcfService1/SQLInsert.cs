@@ -10,42 +10,6 @@ namespace WcfService1
 {
     public class SQLInsert
     {
-        public string InsertPreinscrit(string str)
-        {
-            MySqlConnection conn = DBConf.GetDBConnection();
-            conn.Open();
-            try
-            {
-                MySqlCommand command = conn.CreateCommand();
-                command.CommandText = "INSERT INTO preinscrit(IdPreinscrit,Nom,Prenom,Adresse,CodePostal,Ville,DateNaissance,Telephone,Email,Club,Ufolep) VALUES(@IdPreinscrit,@Nom,@Prenom,@Adresse,@CodePostal,@Ville,@DateNaissance,@Telephone,@Email,@Club,@Ufolep)";
-                //{"Nom":"MARC","Prenom":"Jérémy","Adresse":"59 Cours Clemenceau","CodePostal":"76100","Ville":"Rouen","DateNaissance":"02-06-1998","Telephone":"0782062639","Email":"jeremy.marc.pro@gmail.com","Club":"azerty"}
-                BDDPreinscrit preinscrit = JsonConvert.DeserializeObject<BDDPreinscrit>(str);
-                command.Parameters.AddWithValue("Nom", preinscrit.Nom);
-                command.Parameters.AddWithValue("Prenom", preinscrit.Prenom);
-                command.Parameters.AddWithValue("Adresse", preinscrit.Adresse);
-                command.Parameters.AddWithValue("CodePostal", preinscrit.CodePostal);
-                command.Parameters.AddWithValue("Ville", preinscrit.Ville);
-                command.Parameters.AddWithValue("DateNaissance", preinscrit.DateNaissance);
-                command.Parameters.AddWithValue("Telephone", preinscrit.Telephone);
-                command.Parameters.AddWithValue("Email", preinscrit.Email);
-                command.Parameters.AddWithValue("Club", preinscrit.Club);
-                command.Parameters.AddWithValue("Ufolep", preinscrit.Ufolep);
-                command.ExecuteNonQuery();
-                return "Success !";
-            }
-            catch (Exception e)
-            {
-                return e.ToString(); ;
-                throw;
-            }
-            finally
-            {
-                conn.Close();
-                conn.Dispose();
-                conn = null;
-            }
-        }
-
         public string InsertXbee(string str)
         {
             MySqlConnection conn = DBConf.GetDBConnection();

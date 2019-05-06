@@ -36,7 +36,7 @@ namespace WcfService1
 
         [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "SelectAffichage")]
-        Stream SelectAffichage();
+        List<BDDAffichage> SelectAffichage();
         /*[OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);*/
 
