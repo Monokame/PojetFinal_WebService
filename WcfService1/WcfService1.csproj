@@ -76,7 +76,6 @@
     <Compile Include="DBConn.cs" />
     <Compile Include="SQLInsert.cs" />
     <Compile Include="BDDPreinscrit.cs" />
-    <Compile Include="SQLSelect.cs" />
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>
     </Compile>
