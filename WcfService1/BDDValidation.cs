@@ -1,40 +1,34 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Web;
 
 namespace WcfService1
 {
-    public class BDDXbee
+    public class BDDValidation
     {
         [DataMember]
-        public string temps;
+        public int infoCarte;
         [DataMember]
-        public string carteId;
-        [DataMember]
-        public string portique;
+        public int idPreinscrit;
 
-        public string InsertXbee(BDDXbee xbee)
+        public string InsertValidation(BDDValidation validation)
         {
             MySqlConnection conn = DBConf.GetDBConnection();
             try
             {
                 conn.Open();
                 MySqlCommand command = conn.CreateCommand();
-                command.CommandText = "INSERT INTO portique(idPortique,infoCarte,Temps) VALUES(@portique,@carteId,@temps)";
-                //{"portique":"1","carteId":"316548461","date":"11:34:52"}
-                command.Parameters.AddWithValue("portique", xbee.portique);
-                command.Parameters.AddWithValue("carteId", xbee.carteId);
-                command.Parameters.AddWithValue("temps", xbee.temps);
+                command.CommandText = "INSERT INTO rfid(InfoCarte,idPreinscrit) VALUES(@infoCarte,@idPreinscrit)";
+                command.Parameters.AddWithValue("InfoCarte", validation.infoCarte);
+                command.Parameters.AddWithValue("idPreinscrit", validation.infoCarte);
                 command.ExecuteNonQuery();
-                return "Success !";
+                return "Success";
             }
             catch (Exception e)
             {
-                Debug.Print(e.ToString());
                 return e.ToString();
                 throw;
             }
@@ -45,5 +39,6 @@ namespace WcfService1
                 conn = null;
             }
         }
+
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Web;
 using MySql.Data.MySqlClient;
 
@@ -8,20 +9,26 @@ namespace WcfService1
 {
     public class BDDAffichage
     {
+        [DataMember]
         public string nom;
+        [DataMember]
         public string prenom;
+        [DataMember]
         public int checkpoint;
+        [DataMember]
         public int positionClassement;
+        [DataMember]
         public string temps;
+        [DataMember]
         public string club;
 
         public List<BDDAffichage> SelectAffichage()
         {
-            List<BDDAffichage> affichagesL = new List<BDDAffichage>();
             MySqlConnection conn = DBConf.GetDBConnection();
-            conn.Open();
             try
             {
+                List<BDDAffichage> affichagesL = new List<BDDAffichage>();
+                conn.Open();
                 MySqlCommand command = conn.CreateCommand();
                 command.CommandText = "SELECT preinscrit.nom, preinscrit.prenom, ,";
                 MySqlDataReader reader = command.ExecuteReader();

@@ -15,48 +15,30 @@ namespace WcfService1
     // REMARQUE : pour lancer le client test WCF afin de tester ce service, sélectionnez Service1.svc ou Service1.svc.cs dans l'Explorateur de solutions et démarrez le débogage.
     public class Service1 : IService1
     {
-        /*public string GetData(int value)
-        {
-            return string.Format("You entered: {0}", value);
-        }
-
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
-        {
-            if (composite == null)
-            {
-                throw new ArgumentNullException("composite");
-            }
-            if (composite.BoolValue)
-            {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
-        }*/
-
         public void Insert(BDDPreinscrit bddpreinscrit)
         {
             BDDPreinscrit preinscrit = new BDDPreinscrit();
             preinscrit.Insert(bddpreinscrit);
         }
-        public string InsertXbee(Stream stream)
+        public void InsertXbee(BDDXbee bddxbee)
         {
-            SQLInsert insertSQL = new SQLInsert();
-            StreamReader streamReader = new StreamReader(stream);
-            string str = streamReader.ReadLine();
-            str = insertSQL.InsertXbee(str);
-            return str;
+            BDDXbee xbee = new BDDXbee();
+            xbee.InsertXbee(bddxbee);
         }
-        public string InsertAlerte(Stream stream)
+        public void InsertAlerte(BDDAlerte bddalerte)
         {
-            SQLInsert insertSQL = new SQLInsert();
-            StreamReader streamReader = new StreamReader(stream);
-            string str = streamReader.ReadLine();
-            str = insertSQL.InsertAlerte(str);
-            return str;
+            BDDAlerte alerte = new BDDAlerte();
+            alerte.InsertAlerte(bddalerte);
         }
 
+        public void InsertValidation(BDDValidation bddvalidation)
+        {
+            BDDValidation validation = new BDDValidation();
+            validation.InsertValidation(bddvalidation);
+        }
 
         //******SELECT******//
+
         public List<BDDPreinscrit> Select()
         {
             BDDPreinscrit preinscrit = new BDDPreinscrit();
@@ -68,7 +50,5 @@ namespace WcfService1
             BDDAffichage affichage = new BDDAffichage();
             return affichage.SelectAffichage();
         }
-
-
     }
 }

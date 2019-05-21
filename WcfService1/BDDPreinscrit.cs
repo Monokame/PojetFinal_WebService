@@ -35,7 +35,7 @@ namespace WcfService1
         public string Ufolep;
         public string Insert(BDDPreinscrit preinscrit)
         {
-                MySqlConnection conn = DBConf.GetDBConnection();
+            MySqlConnection conn = DBConf.GetDBConnection();
             try
             {
                 conn.Open();

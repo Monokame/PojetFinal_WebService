@@ -74,7 +74,7 @@
     <Compile Include="BDDXbee.cs" />
     <Compile Include="DBConf.cs" />
     <Compile Include="DBConn.cs" />
-    <Compile Include="SQLInsert.cs" />
+    <Compile Include="BDDAlerte.cs" />
     <Compile Include="BDDPreinscrit.cs" />
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>
@@ -82,11 +82,13 @@
     <Compile Include="IService1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BDDAffichage.cs" />
+    <Compile Include="BDDValidation.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

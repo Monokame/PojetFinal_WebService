@@ -14,32 +14,32 @@ namespace WcfService1
     [ServiceContract]
     public interface IService1
     {
-
-        /*[OperationContract]
-        string GetData(int value);*/
-
+        // INSERT
         [OperationContract]
-        [WebInvoke(Method = "POST", UriTemplate = "Insert", RequestFormat =WebMessageFormat.Json)]
+        [WebInvoke(Method = "POST", UriTemplate = "Insert", RequestFormat = WebMessageFormat.Json)]
         void Insert(BDDPreinscrit preinscrit);
 
         [OperationContract]
-        [WebInvoke(Method = "POST", UriTemplate = "InsertXbee")]
-        string InsertXbee(Stream stream);
+        [WebInvoke(Method = "POST", UriTemplate = "InsertXbee", RequestFormat = WebMessageFormat.Json)]
+        void InsertXbee(BDDXbee xbee);
 
         [OperationContract]
-        [WebInvoke(Method = "POST", UriTemplate = "InsertAlerte")]
-        string InsertAlerte(Stream stream);
+        [WebInvoke(Method = "POST", UriTemplate = "InsertAlerte", RequestFormat = WebMessageFormat.Json)]
+        void InsertAlerte(BDDAlerte alerte);
 
         [OperationContract]
-        [WebInvoke(Method = "GET", UriTemplate = "Select", ResponseFormat =WebMessageFormat.Json),]
+        [WebInvoke(Method = "POST", UriTemplate = "Validation", RequestFormat = WebMessageFormat.Json)]
+        void InsertValidation(BDDValidation validation);
+
+        // SELECT
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "Select", ResponseFormat = WebMessageFormat.Json)]
         List<BDDPreinscrit> Select();
 
         [OperationContract]
-        [WebInvoke(Method = "GET", UriTemplate = "SelectAffichage")]
+        [WebInvoke(Method = "GET", UriTemplate = "SelectAffichage", ResponseFormat = WebMessageFormat.Json)]
         List<BDDAffichage> SelectAffichage();
-        /*[OperationContract]
-        CompositeType GetDataUsingDataContract(CompositeType composite);*/
-
     }
 
 
