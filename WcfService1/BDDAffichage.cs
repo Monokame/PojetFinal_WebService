@@ -16,8 +16,6 @@ namespace WcfService1
         [DataMember]
         public int checkpoint;
         [DataMember]
-        public int positionClassement;
-        [DataMember]
         public string temps;
         [DataMember]
         public string club;
@@ -30,18 +28,20 @@ namespace WcfService1
                 List<BDDAffichage> affichagesL = new List<BDDAffichage>();
                 conn.Open();
                 MySqlCommand command = conn.CreateCommand();
-                command.CommandText = "SELECT preinscrit.nom, preinscrit.prenom, ,";
+                command.CommandText = "SELECT preinscrit.Nom, preinscrit.Prenom,portique.idPortique,portique.Temps,preinscrit.Club " +
+                    "FROM preinscrit, portique,rfid " +
+                    "WHERE rfid.InfoCarte=portique.infoCarte and preinscrit.IdPreinscrit = rfid.idPreinscrit " +
+                    "ORDER BY portique.idPortique DESC, portique.Temps ASC";
                 MySqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
                     BDDAffichage affichage = new BDDAffichage
                     {
-                        nom = reader[1].ToString(),
-                        prenom = reader[2].ToString(),
-                        checkpoint = Convert.ToInt32(reader[3]),
-                        positionClassement = Convert.ToInt32(reader[4]),
-                        temps = reader[5].ToString(),
-                        club = reader[6].ToString()
+                        nom = reader[0].ToString(),
+                        prenom = reader[1].ToString(),
+                        checkpoint = Convert.ToInt32(reader[2]),
+                        temps = reader[3].ToString(),
+                        club = reader[4].ToString()
                     };
                     affichagesL.Add(affichage);
                 }

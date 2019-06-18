@@ -10,9 +10,9 @@ namespace WcfService1
     public class BDDValidation
     {
         [DataMember]
-        public int infoCarte;
+        public string infoCarte;
         [DataMember]
-        public int idPreinscrit;
+        public string idPreinscrit;
 
         public string InsertValidation(BDDValidation validation)
         {
@@ -23,7 +23,7 @@ namespace WcfService1
                 MySqlCommand command = conn.CreateCommand();
                 command.CommandText = "INSERT INTO rfid(InfoCarte,idPreinscrit) VALUES(@infoCarte,@idPreinscrit)";
                 command.Parameters.AddWithValue("InfoCarte", validation.infoCarte);
-                command.Parameters.AddWithValue("idPreinscrit", validation.infoCarte);
+                command.Parameters.AddWithValue("idPreinscrit", validation.idPreinscrit);
                 command.ExecuteNonQuery();
                 return "Success";
             }

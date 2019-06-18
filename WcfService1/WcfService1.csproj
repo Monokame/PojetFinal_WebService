@@ -90,6 +90,7 @@
   <ItemGroup>
     <Content Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
