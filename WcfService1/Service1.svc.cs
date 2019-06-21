@@ -15,23 +15,23 @@ namespace WcfService1
     // REMARQUE : pour lancer le client test WCF afin de tester ce service, sélectionnez Service1.svc ou Service1.svc.cs dans l'Explorateur de solutions et démarrez le débogage.
     public class Service1 : IService1
     {
-        public void Insert(BDDPreinscrit bddpreinscrit)
+        public string Insert(BDDPreinscrit bddpreinscrit)
         {
             BDDPreinscrit preinscrit = new BDDPreinscrit();
-            preinscrit.Insert(bddpreinscrit);
+            return preinscrit.Insert(bddpreinscrit);
         }
-        public void InsertXbee(BDDXbee bddxbee)
+        public string InsertXbee(BDDXbee bddxbee)
         {
             BDDXbee xbee = new BDDXbee();
             xbee.InsertXbee(bddxbee);
         }
-        public void InsertAlerte(BDDAlerte bddalerte)
+        public string InsertAlerte(BDDAlerte bddalerte)
         {
             BDDAlerte alerte = new BDDAlerte();
             alerte.InsertAlerte(bddalerte);
         }
 
-        public void InsertValidation(BDDValidation bddvalidation)
+        public string InsertValidation(BDDValidation bddvalidation)
         {
             BDDValidation validation = new BDDValidation();
             validation.InsertValidation(bddvalidation);

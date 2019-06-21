@@ -17,19 +17,19 @@ namespace WcfService1
         // INSERT
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "Insert", RequestFormat = WebMessageFormat.Json)]
-        void Insert(BDDPreinscrit preinscrit);
+        string Insert(BDDPreinscrit preinscrit);
 
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "InsertXbee", RequestFormat = WebMessageFormat.Json)]
-        void InsertXbee(BDDXbee xbee);
+        string InsertXbee(BDDXbee xbee);
 
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "InsertAlerte", RequestFormat = WebMessageFormat.Json)]
-        void InsertAlerte(BDDAlerte alerte);
+        string InsertAlerte(BDDAlerte alerte);
 
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "Validation", RequestFormat = WebMessageFormat.Json)]
-        void InsertValidation(BDDValidation validation);
+        string InsertValidation(BDDValidation validation);
 
         // SELECT
 

@@ -54,7 +54,7 @@ namespace WcfService1
                 command.Parameters.AddWithValue("Ufolep", preinscrit.Ufolep);
                 command.Parameters.AddWithValue("Parcours", preinscrit.Parcours);
                 command.ExecuteNonQuery();
-                return "Success";
+                return "Success !";
             }
             catch (Exception e)
             {

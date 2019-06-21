@@ -25,7 +25,7 @@ namespace WcfService1
                 command.Parameters.AddWithValue("InfoCarte", validation.infoCarte);
                 command.Parameters.AddWithValue("idPreinscrit", validation.idPreinscrit);
                 command.ExecuteNonQuery();
-                return "Success";
+                return "Success !";
             }
             catch (Exception e)
             {

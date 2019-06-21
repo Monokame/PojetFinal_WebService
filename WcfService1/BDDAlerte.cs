@@ -23,7 +23,7 @@ namespace WcfService1
                 command.CommandText = "INSERT INTO alerte (alerte) VALUES (@alerte)";
                 command.Parameters.AddWithValue("alerte", alerte.alerte);
                 command.ExecuteNonQuery();
-                return "Success";
+                return "Success !";
             }
             catch (Exception e)
             {
