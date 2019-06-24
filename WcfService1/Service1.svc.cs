@@ -23,18 +23,18 @@ namespace WcfService1
         public string InsertXbee(BDDXbee bddxbee)
         {
             BDDXbee xbee = new BDDXbee();
-            xbee.InsertXbee(bddxbee);
+            return xbee.InsertXbee(bddxbee);
         }
         public string InsertAlerte(BDDAlerte bddalerte)
         {
             BDDAlerte alerte = new BDDAlerte();
-            alerte.InsertAlerte(bddalerte);
+            return alerte.InsertAlerte(bddalerte);
         }
 
         public string InsertValidation(BDDValidation bddvalidation)
         {
             BDDValidation validation = new BDDValidation();
-            validation.InsertValidation(bddvalidation);
+            return validation.InsertValidation(bddvalidation);
         }
 
         //******SELECT******//
